@@ -13,7 +13,7 @@ type Person : either {
   Hungry,
   GoingToStore,
   ReturningFromStore {
-    carrying: 1..8
+    carrying: 1..2
   },
   Failed
 };
@@ -48,12 +48,14 @@ rule step for state in roommates {
     }
 
     ReturningFromStore(bag) {
-            notePresent = False;
       if (urandomRange(0, 1) == 0) {
         state = Failed;
+        notePresent = false;
       } else {
         bananas += bag.carrying;
         state = Hungry;
+         notePresent = False;
+
       }
     }
     
