@@ -27,12 +27,8 @@ rule step for state in roommates {
     }
 
     Hungry {
-      if bananas == 0 {
-                 notePresent = False;
-      
-
-        if (notePresent) {
-                  
+      if bananas == 0 {    
+        if (notePresent) {        
           // Roommate at store: try again later
         } else {
           notePresent = True;
@@ -65,7 +61,8 @@ rule step for state in roommates {
     Failed {
 
       state = Hungry;
-      
+      notePresent = False;
+
 
     }
   }
