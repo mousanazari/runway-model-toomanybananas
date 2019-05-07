@@ -29,11 +29,7 @@ rule step for state in roommates {
     Hungry {
       if bananas == 0 {
         if (notePresent) {
-          if(bananas==0){
-                        notePresent = True;
-                      }
-           
-          
+                  
           // Roommate at store: try again later
         } else {
           notePresent = True;
@@ -52,11 +48,11 @@ rule step for state in roommates {
     }
 
     ReturningFromStore(bag) {
+            notePresent = False;
       if (urandomRange(0, 1) == 0) {
         state = Failed;
       } else {
         bananas += bag.carrying;
-        notePresent = False;
         state = Hungry;
       }
     }
