@@ -50,7 +50,7 @@ rule step for state in roommates {
     ReturningFromStore(bag) {
       if (urandomRange(0, 1) == 0) {
         state = Failed;
-        notePresent = false;
+        
       } else {
         bananas += bag.carrying;
         state = Hungry;
@@ -60,7 +60,10 @@ rule step for state in roommates {
     }
     
     Failed {
+          notePresent = false;
+
       state = Hungry;
+      
 
     }
   }
